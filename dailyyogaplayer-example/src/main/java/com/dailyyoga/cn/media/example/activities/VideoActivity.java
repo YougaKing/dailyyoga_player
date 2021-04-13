@@ -151,7 +151,9 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
         mVideoView = (DailyyogaVideoView) findViewById(R.id.video_view);
-        mVideoView.setPVOptions(pvOptions(this));
+        PVOptions pvOptions = pvOptions(this);
+        pvOptions.setPlayer(PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER);
+        mVideoView.setPVOptions(pvOptions);
         mVideoView.setMediaController(mMediaController);
         setHudView(mHudView);
 

@@ -38,8 +38,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation project(':dailyyogaplayer')
-//    implementation 'com.github.YougaKing:dailyyoga_player:1.0.0'
+//    implementation project(':dailyyogaplayer')
+    implementation 'com.github.YougaKing:dailyyoga_player:1.0.1'
 
     implementation "androidx.multidex:multidex:${projectConfig.androidxMultidexVersion}"
     implementation "androidx.legacy:legacy-support-v4:${projectConfig.androidxLegacyVersion}"
