@@ -1,4 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'com.kezong.fat-aar'
+
+//设置Jitpack发布的Group
+//我的github账号是helen-x, 对应我的group就是com.github.helen-x
+group = 'com.github.YougaKing'
 
 android {
     // http://tools.android.com/tech-docs/new-build-system/tips
@@ -27,12 +33,34 @@ dependencies {
 
     implementation "androidx.annotation:annotation:${projectConfig.androidxAannotationVersion}"
 
+    embed project(':dailyyogaplayer-exo')
+    embed project(':dailyyogaplayer-android')
+
     implementation project(':dailyyogaplayer-exo')
     implementation project(':dailyyogaplayer-android')
+
     api "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv5:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-arm64:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-x86:${projectConfig.ijkplayerVersion}"
+}
+
+repositories {
+    mavenCentral()
+}
+
+//设置maven deployer
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.github.YougaKing'
+            pom.artifactId = 'dailyyoga_player'
+            pom.version = '1.0.0'
+            //文件发布到下面目录
+            repository(url: uri('../maven'))
+        }
+    }
 }
 
