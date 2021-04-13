@@ -36,8 +36,8 @@ dependencies {
     embed project(':dailyyogaplayer-exo')
     embed project(':dailyyogaplayer-android')
 
-    implementation project(':dailyyogaplayer-exo')
-    implementation project(':dailyyogaplayer-android')
+//    implementation project(':dailyyogaplayer-exo')
+//    implementation project(':dailyyogaplayer-android')
 
     api "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:${projectConfig.ijkplayerVersion}"
@@ -57,7 +57,7 @@ uploadArchives {
             //设置插件的GAV参数
             pom.groupId = 'com.github.YougaKing'
             pom.artifactId = 'dailyyoga_player'
-            pom.version = '1.0.0'
+            pom.version = '1.0.1'
             //文件发布到下面目录
             repository(url: uri('../maven'))
         }
