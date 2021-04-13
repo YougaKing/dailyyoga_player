@@ -1,0 +1,32 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+// Define versions in a single place
+ext.projectConfig = [
+        // Sdk and tools
+        compileSdkVersion              : 28,
+
+        minSdkVersion                  : 16,
+        targetSdkVersion               : 27,
+
+        version_code                   : 40,
+        version_name                   : '5.4.0',
+
+        // App dependencies
+        androidxAannotationVersion     : '1.1.0',
+        androidxLegacyVersion          : '1.0.0',
+        androidxRecyclerviewVersion    : '1.1.0',
+        googleMaterialVersion          : '1.2.1',
+        androidxMultidexVersion        : '2.0.1',
+        androidxConstraintlayoutVersion: '1.1.3',
+        androidxAppcompatVersion       : '1.2.0',
+        androidxMedia2Version          : '1.1.2',
+        androidxPreferenceVersion      : '1.1.1',
+
+        junitVersion                   : '4.12',
+        androidxTestJunitVersion       : '1.1.2',
+        androidxTestEspressoVersion    : '3.2.0',
+
+        ijkplayerVersion               : "0.8.8",
+        exoplayerVersion               : "2.13.2"
+]

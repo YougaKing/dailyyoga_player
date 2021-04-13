@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dailyyoga.cn.media">
+
+    <application android:allowBackup="true">
+
+        <service
+            android:name="com.dailyyoga.cn.media.services.MediaPlayerService"
+            android:enabled="false"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

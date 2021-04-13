@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">dailyyogademo</string>
+    <string name="sample">sample</string>
+    <string name="recent">recent</string>
+    <string name="settings">settings</string>
+    <string name="toggle_player">播放器切换</string>
+    <string name="toggle_render">切换view</string>
+    <string name="toggle_ratio">切换分辨率</string>
+    <string name="show_info">媒体信息</string>
+    <string name="tracks">轨道</string>
+
+</resources>

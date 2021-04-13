@@ -1,0 +1,5 @@
+include ':dailyyogaplayer'
+include ':dailyyogaplayer-exo'
+include ':dailyyogaplayer-android'
+include ':dailyyogaplayer-example'
+rootProject.name = "dailyyoga_player"
