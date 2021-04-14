@@ -17,17 +17,20 @@ package com.dailyyoga.cn.media.exo.demo.player;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.RenderersFactory;
 import com.google.android.exoplayer2.database.DatabaseProvider;
 import com.google.android.exoplayer2.database.ExoDatabaseProvider;
+import com.google.android.exoplayer2.upstream.DataSink;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.upstream.cache.Cache;
+import com.google.android.exoplayer2.upstream.cache.CacheDataSink;
 import com.google.android.exoplayer2.upstream.cache.CacheDataSource;
 import com.google.android.exoplayer2.upstream.cache.NoOpCacheEvictor;
 import com.google.android.exoplayer2.upstream.cache.SimpleCache;
@@ -42,6 +45,7 @@ import java.util.Map;
 /** Utility methods for the demo app. */
 public final class DemoUtil {
 
+    private static final String TAG = DemoUtil.class.getSimpleName();
     private static final String DOWNLOAD_CONTENT_DIRECTORY = "downloads";
 
     private static DataSource.Factory dataSourceFactory;
@@ -88,7 +92,15 @@ public final class DemoUtil {
             context = context.getApplicationContext();
             DefaultDataSourceFactory upstreamFactory =
                     new DefaultDataSourceFactory(context, getHttpDataSourceFactory(context));
-            dataSourceFactory = buildReadOnlyCacheDataSource(upstreamFactory, getDownloadCache(context));
+
+            Cache cache = getDownloadCache(context);
+
+            // CacheDataSinkFactory 第二个参数为单个缓存文件大小，如果需要缓存的文件大小超过此限制，则会分片缓存，不影响播放
+            CacheDataSink.Factory cacheWriteDataSinkFactory = new CacheDataSink.Factory()
+                    .setCache(cache)
+                    .setFragmentSize(CacheDataSink.DEFAULT_FRAGMENT_SIZE);
+
+            dataSourceFactory = buildCacheDataSource(upstreamFactory, null, cache);
         }
         return dataSourceFactory;
     }
@@ -121,13 +133,15 @@ public final class DemoUtil {
         return downloadDirectory;
     }
 
-    private static CacheDataSource.Factory buildReadOnlyCacheDataSource(
-            DataSource.Factory upstreamFactory, Cache cache) {
+    private static CacheDataSource.Factory buildCacheDataSource(
+            DataSource.Factory upstreamFactory,
+            DataSink.Factory cacheWriteDataSinkFactory,
+            Cache cache) {
         return new CacheDataSource.Factory()
                 .setCache(cache)
                 .setUpstreamDataSourceFactory(upstreamFactory)
-                .setCacheWriteDataSinkFactory(null)
-                .setFlags(CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR);
+                .setCacheWriteDataSinkFactory(cacheWriteDataSinkFactory)
+                .setFlags(CacheDataSource.FLAG_BLOCK_ON_CACHE | CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR);
     }
 
     public static MediaItem createMediaItem(Context context, Uri uri, Map<String, String> headers) {
