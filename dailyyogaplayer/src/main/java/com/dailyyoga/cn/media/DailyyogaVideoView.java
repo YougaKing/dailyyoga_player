@@ -688,26 +688,25 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
                 case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
                     if (mMediaPlayer.isPlaying()) {
                         pause();
-                        mMediaController.show();
                     } else {
                         start();
-                        mMediaController.hide();
                     }
+                    mMediaController.show();
                     return true;
                 // 播放媒体键
                 case KeyEvent.KEYCODE_MEDIA_PLAY:
                     if (!mMediaPlayer.isPlaying()) {
                         start();
-                        mMediaController.hide();
                     }
+                    mMediaController.show();
                     return true;
                 // 停止媒体键 || 暂停没体检
                 case KeyEvent.KEYCODE_MEDIA_STOP:
                 case KeyEvent.KEYCODE_MEDIA_PAUSE:
                     if (mMediaPlayer.isPlaying()) {
                         pause();
-                        mMediaController.show();
                     }
+                    mMediaController.show();
                     return true;
                 default:
                     toggleMediaControlsVisiblity(keyCode);
