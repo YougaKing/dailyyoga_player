@@ -2,6 +2,75 @@
 
     <color name="black_overlay">#66000000</color>
 
+
+    <color name="colorAccent">#8CA5FF</color>
+    <color name="colorAccent40">#668CA5FF</color>
+    <color name="cn_yoga_base_bg_color">#F1F1F1</color>
+
+    <color name="stroke_color">@color/white</color>
+
+    <color name="text_hint_color">#999999</color>
+    <color name="text_color">#666666</color>
+    <color name="text_color_dark">#333333</color>
+    <color name="color_d6">#D6D6D6</color>
+
+    <color name="vip_color">#C59D53</color>
+    <color name="member_color">#F9D33E</color>
+    <color name="member_tips_color">#FFFA862A</color>
+    <color name="color_c8">#C8C8C8</color>
+
+    <color name="line_color">#555556</color>
+    <color name="color_e5">#E5E5E5</color>
+    <color name="color_fa">#FAFAFA</color>
+
+    <color name="black">#000000</color>
+    <color name="black80">#CC000000</color>
+    <color name="black60">#99000000</color>
+
+    <color name="gray">#B8B8BA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white5">#D0FFFFFF</color>
+    <color name="white10">#1AFFFFFF</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="white30">#4DFFFFFF</color>
+    <color name="white40">#66FFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+    <color name="white60">#99FFFFFF</color>
+    <color name="white80">#CCFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_yobi">#FFBB27</color>
+    <color name="color_growth">#22C7A8</color>
+    <color name="color_DABA87">#DABA87</color>
+    <color name="color_FCDEB4">#FCDEB4</color>
+    <color name="color_784720">#784720</color>
+    <color name="color_FADCB2">#FADCB2</color>
+    <color name="color_CBB28E">#CBB28E</color>
+    <color name="color_DBBB88">#DBBB88</color>
+    <color name="color_A48F72">#A48F72</color>
+    <color name="color_E1C190">#E1C190</color>
+    <color name="color_1A1A2C_80">#CC1A1A2C</color>
+    <color name="color_1A1A2C_0">#001A1A2C</color>
+    <color name="color_1A1A2C">#1A1A2C</color>
+    <color name="color_3251C1">#3251C1</color>
+    <color name="color_EFF3FF">#EFF3FF</color>
+    <color name="color_DAE2FF">#DAE2FF</color>
+    <color name="color_FA9349">#FA9349</color>
+
+    <color name="color_0BD1A0">#0BD1A0</color>
+    <color name="color_57EDB1">#57EDB1</color>
+    <color name="color_ECB998">#ECB998</color>
+    <color name="color_ECA481">#ECA481</color>
+    <color name="color_5CD3DE">#5CD3DE</color>
+    <color name="color_75D4DE">#75D4DE</color>
+    <color name="color_FFF300">#FFF300</color>
+    <color name="color_F45A23">#FFF45A23</color>
+    <color name="color_F3D5A9">#F3D5A9</color>
+    <color name="color_C0D1FF">#C0D1FF</color>
+    <color name="color_67676E">#67676E</color>
+
+    <color name="secondaryProgress">#B38CA5FF</color>
+
     <color name="ijk_color_blue_main">@color/ijk_color_blue_500</color>
     <color name="ijk_color_blue_50">#E3F2FD</color>
     <color name="ijk_color_blue_100">#BBDEFB</color>
