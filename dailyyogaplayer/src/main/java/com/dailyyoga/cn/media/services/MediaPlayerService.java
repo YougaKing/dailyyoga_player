@@ -24,7 +24,8 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import com.dailyyoga.cn.media.IMediaPlayer;
+
 
 public class MediaPlayerService extends Service {
     private static IMediaPlayer sMediaPlayer;

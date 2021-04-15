@@ -17,10 +17,9 @@
 
 package com.dailyyoga.cn.media.example.widget;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import tv.danmaku.ijk.media.player.MediaPlayerProxy;
-import tv.danmaku.ijk.media.player.TextureMediaPlayer;
+
+import com.dailyyoga.cn.media.IMediaPlayer;
+import com.dailyyoga.cn.media.TextureMediaPlayer;
 
 public class MediaPlayerCompat {
     public static String getName(IMediaPlayer mp) {
@@ -41,36 +40,36 @@ public class MediaPlayerCompat {
         }
     }
 
-    public static IjkMediaPlayer getIjkMediaPlayer(IMediaPlayer mp) {
-        IjkMediaPlayer ijkMediaPlayer = null;
-        if (mp == null) {
-            return null;
-        } if (mp instanceof IjkMediaPlayer) {
-            ijkMediaPlayer = (IjkMediaPlayer) mp;
-        } else if (mp instanceof MediaPlayerProxy && ((MediaPlayerProxy) mp).getInternalMediaPlayer() instanceof IjkMediaPlayer) {
-            ijkMediaPlayer = (IjkMediaPlayer) ((MediaPlayerProxy) mp).getInternalMediaPlayer();
-        }
+    public static IMediaPlayer getIjkMediaPlayer(IMediaPlayer mp) {
+        IMediaPlayer ijkMediaPlayer = null;
+//        if (mp == null) {
+//            return null;
+//        } if (mp instanceof IjkMediaPlayer) {
+//            ijkMediaPlayer = (IjkMediaPlayer) mp;
+//        } else if (mp instanceof MediaPlayerProxy && ((MediaPlayerProxy) mp).getInternalMediaPlayer() instanceof IjkMediaPlayer) {
+//            ijkMediaPlayer = (IjkMediaPlayer) ((MediaPlayerProxy) mp).getInternalMediaPlayer();
+//        }
         return ijkMediaPlayer;
     }
 
     public static void selectTrack(IMediaPlayer mp, int stream) {
-        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
-        if (ijkMediaPlayer == null)
-            return;
-        ijkMediaPlayer.selectTrack(stream);
+//        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
+//        if (ijkMediaPlayer == null)
+//            return;
+//        ijkMediaPlayer.selectTrack(stream);
     }
 
     public static void deselectTrack(IMediaPlayer mp, int stream) {
-        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
-        if (ijkMediaPlayer == null)
-            return;
-        ijkMediaPlayer.deselectTrack(stream);
+//        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
+//        if (ijkMediaPlayer == null)
+//            return;
+//        ijkMediaPlayer.deselectTrack(stream);
     }
 
     public static int getSelectedTrack(IMediaPlayer mp, int trackType) {
-        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
-        if (ijkMediaPlayer == null)
+//        IjkMediaPlayer ijkMediaPlayer = getIjkMediaPlayer(mp);
+//        if (ijkMediaPlayer == null)
             return -1;
-        return ijkMediaPlayer.getSelectedTrack(trackType);
+//        return ijkMediaPlayer.getSelectedTrack(trackType);
     }
 }

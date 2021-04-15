@@ -7,11 +7,10 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.TableLayout;
 
+import com.dailyyoga.cn.media.IMediaPlayer;
+
 import java.util.Locale;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import tv.danmaku.ijk.media.player.MediaPlayerProxy;
 
 public class InfoHudViewHolder {
     private TableLayoutBinder mTableLayoutBinder;
@@ -104,52 +103,52 @@ public class InfoHudViewHolder {
             switch (msg.what) {
                 case MSG_UPDATE_HUD: {
                     InfoHudViewHolder holder = InfoHudViewHolder.this;
-                    IjkMediaPlayer mp = null;
-                    if (mMediaPlayer == null)
-                        break;
-                    if (mMediaPlayer instanceof IjkMediaPlayer) {
-                        mp = (IjkMediaPlayer) mMediaPlayer;
-                    } else if (mMediaPlayer instanceof MediaPlayerProxy) {
-                        MediaPlayerProxy proxy = (MediaPlayerProxy) mMediaPlayer;
-                        IMediaPlayer internal = proxy.getInternalMediaPlayer();
-                        if (internal != null && internal instanceof IjkMediaPlayer)
-                            mp = (IjkMediaPlayer) internal;
-                    }
-                    if (mp == null)
-                        break;
-
-                    int vdec = mp.getVideoDecoder();
-                    switch (vdec) {
-                        case IjkMediaPlayer.FFP_PROPV_DECODER_AVCODEC:
-                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "avcodec");
-                            break;
-                        case IjkMediaPlayer.FFP_PROPV_DECODER_MEDIACODEC:
-                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "MediaCodec");
-                            break;
-                        default:
-                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "");
-                            break;
-                    }
-
-                    float fpsOutput = mp.getVideoOutputFramesPerSecond();
-                    float fpsDecode = mp.getVideoDecodeFramesPerSecond();
-                    setRowValue(com.dailyyoga.cn.media.R.string.fps, String.format(Locale.US, "%.2f / %.2f", fpsDecode, fpsOutput));
-
-                    long videoCachedDuration = mp.getVideoCachedDuration();
-                    long audioCachedDuration = mp.getAudioCachedDuration();
-                    long videoCachedBytes    = mp.getVideoCachedBytes();
-                    long audioCachedBytes    = mp.getAudioCachedBytes();
-                    long tcpSpeed            = mp.getTcpSpeed();
-                    long bitRate             = mp.getBitRate();
-                    long seekLoadDuration    = mp.getSeekLoadDuration();
-
-                    setRowValue(com.dailyyoga.cn.media.R.string.v_cache, String.format(Locale.US, "%s, %s", formatedDurationMilli(videoCachedDuration), formatedSize(videoCachedBytes)));
-                    setRowValue(com.dailyyoga.cn.media.R.string.a_cache, String.format(Locale.US, "%s, %s", formatedDurationMilli(audioCachedDuration), formatedSize(audioCachedBytes)));
-                    setRowValue(com.dailyyoga.cn.media.R.string.load_cost, String.format(Locale.US, "%d ms", mLoadCost));
-                    setRowValue(com.dailyyoga.cn.media.R.string.seek_cost, String.format(Locale.US, "%d ms", mSeekCost));
-                    setRowValue(com.dailyyoga.cn.media.R.string.seek_load_cost, String.format(Locale.US, "%d ms", seekLoadDuration));
-                    setRowValue(com.dailyyoga.cn.media.R.string.tcp_speed, String.format(Locale.US, "%s", formatedSpeed(tcpSpeed, 1000)));
-                    setRowValue(com.dailyyoga.cn.media.R.string.bit_rate, String.format(Locale.US, "%.2f kbs", bitRate / 1000f));
+//                    IjkMediaPlayer mp = null;
+//                    if (mMediaPlayer == null)
+//                        break;
+//                    if (mMediaPlayer instanceof IjkMediaPlayer) {
+//                        mp = (IjkMediaPlayer) mMediaPlayer;
+//                    } else if (mMediaPlayer instanceof MediaPlayerProxy) {
+//                        MediaPlayerProxy proxy = (MediaPlayerProxy) mMediaPlayer;
+//                        IMediaPlayer internal = proxy.getInternalMediaPlayer();
+//                        if (internal != null && internal instanceof IjkMediaPlayer)
+//                            mp = (IjkMediaPlayer) internal;
+//                    }
+//                    if (mp == null)
+//                        break;
+//
+//                    int vdec = mp.getVideoDecoder();
+//                    switch (vdec) {
+//                        case IjkMediaPlayer.FFP_PROPV_DECODER_AVCODEC:
+//                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "avcodec");
+//                            break;
+//                        case IjkMediaPlayer.FFP_PROPV_DECODER_MEDIACODEC:
+//                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "MediaCodec");
+//                            break;
+//                        default:
+//                            setRowValue(com.dailyyoga.cn.media.R.string.vdec, "");
+//                            break;
+//                    }
+//
+//                    float fpsOutput = mp.getVideoOutputFramesPerSecond();
+//                    float fpsDecode = mp.getVideoDecodeFramesPerSecond();
+//                    setRowValue(com.dailyyoga.cn.media.R.string.fps, String.format(Locale.US, "%.2f / %.2f", fpsDecode, fpsOutput));
+//
+//                    long videoCachedDuration = mp.getVideoCachedDuration();
+//                    long audioCachedDuration = mp.getAudioCachedDuration();
+//                    long videoCachedBytes    = mp.getVideoCachedBytes();
+//                    long audioCachedBytes    = mp.getAudioCachedBytes();
+//                    long tcpSpeed            = mp.getTcpSpeed();
+//                    long bitRate             = mp.getBitRate();
+//                    long seekLoadDuration    = mp.getSeekLoadDuration();
+//
+//                    setRowValue(com.dailyyoga.cn.media.R.string.v_cache, String.format(Locale.US, "%s, %s", formatedDurationMilli(videoCachedDuration), formatedSize(videoCachedBytes)));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.a_cache, String.format(Locale.US, "%s, %s", formatedDurationMilli(audioCachedDuration), formatedSize(audioCachedBytes)));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.load_cost, String.format(Locale.US, "%d ms", mLoadCost));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.seek_cost, String.format(Locale.US, "%d ms", mSeekCost));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.seek_load_cost, String.format(Locale.US, "%d ms", seekLoadDuration));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.tcp_speed, String.format(Locale.US, "%s", formatedSpeed(tcpSpeed, 1000)));
+//                    setRowValue(com.dailyyoga.cn.media.R.string.bit_rate, String.format(Locale.US, "%.2f kbs", bitRate / 1000f));
 
                     mHandler.removeMessages(MSG_UPDATE_HUD);
                     mHandler.sendEmptyMessageDelayed(MSG_UPDATE_HUD, 500);

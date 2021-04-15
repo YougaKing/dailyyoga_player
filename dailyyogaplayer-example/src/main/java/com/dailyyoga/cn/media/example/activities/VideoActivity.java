@@ -53,13 +53,9 @@ import com.dailyyoga.cn.media.example.widget.AndroidMediaController;
 import com.dailyyoga.cn.media.example.widget.InfoHudViewHolder;
 import com.dailyyoga.cn.media.example.widget.MediaPlayerCompat;
 import com.dailyyoga.cn.media.example.widget.TableLayoutBinder;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
-
-import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_ANDROID_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER;
-import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_IJK_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_NONE;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_SURFACE_VIEW;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_TEXTURE_VIEW;
@@ -68,7 +64,7 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
     private static final String TAG = "VideoActivity";
 
     private String mVideoPath;
-    private Uri    mVideoUri;
+    private Uri mVideoUri;
 
     private AndroidMediaController mMediaController;
     private DailyyogaVideoView mVideoView;
@@ -147,8 +143,8 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         mDrawerLayout.setScrimColor(Color.TRANSPARENT);
 
         // init player
-        IjkMediaPlayer.loadLibrariesOnce(null);
-        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+//        IjkMediaPlayer.loadLibrariesOnce(null);
+//        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
         mVideoView = (DailyyogaVideoView) findViewById(R.id.video_view);
         PVOptions pvOptions = pvOptions(this);
@@ -171,7 +167,7 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         }
         mVideoView.start();
 
-        mVideoView.setOnErrorListener((mediaPlayer, frameworkErr, implErr) -> {
+        mVideoView.setOnErrorListener((mediaPlayer, frameworkErr, implErr, t) -> {
             /* Otherwise, pop up an error dialog so the user knows that
              * something bad has happened. Only try and pop up the dialog
              * if we're attached to a window. When we're going away and no
@@ -216,7 +212,7 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         } else {
             mVideoView.enterBackground();
         }
-        IjkMediaPlayer.native_profileEnd();
+//        IjkMediaPlayer.native_profileEnd();
     }
 
     @Override
@@ -369,23 +365,23 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         boolean mediaCodecHandleResolutionChange = sharedPreferences.getBoolean(key, false);
         pvOptions.setMediaCodecHandleResolutionChange(mediaCodecHandleResolutionChange);
 
-        key =context.getString(R.string.pref_key_using_opensl_es);
+        key = context.getString(R.string.pref_key_using_opensl_es);
         boolean usingOpenSLES = sharedPreferences.getBoolean(key, false);
         pvOptions.setUsingOpenSLES(usingOpenSLES);
 
-        key =context.getString(R.string.pref_key_pixel_format);
+        key = context.getString(R.string.pref_key_pixel_format);
         String pixelFormat = sharedPreferences.getString(key, "");
         pvOptions.setPixelFormat(pixelFormat);
 
-        key =context.getString(R.string.pref_key_enable_detached_surface_texture);
+        key = context.getString(R.string.pref_key_enable_detached_surface_texture);
         boolean enableDetachedSurfaceTextureView = sharedPreferences.getBoolean(key, false);
         pvOptions.setEnableDetachedSurfaceTextureView(enableDetachedSurfaceTextureView);
 
-        key =context.getString(R.string.pref_key_using_mediadatasource);
+        key = context.getString(R.string.pref_key_using_mediadatasource);
         boolean usingMediaDataSource = sharedPreferences.getBoolean(key, false);
         pvOptions.setUsingMediaDataSource(usingMediaDataSource);
 
-        key =context.getString(R.string.pref_key_last_directory);
+        key = context.getString(R.string.pref_key_last_directory);
         String lastDirectory = sharedPreferences.getString(key, "/");
         pvOptions.setLastDirectory(lastDirectory);
         return pvOptions;

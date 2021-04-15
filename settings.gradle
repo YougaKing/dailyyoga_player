@@ -1,6 +1,7 @@
-include ':dailyyogaplayer-ijk'
+include ':dailyyogaplayer-example'
 include ':dailyyogaplayer'
+include ':dailyyogaplayer-basic'
 include ':dailyyogaplayer-exo'
 include ':dailyyogaplayer-android'
-include ':dailyyogaplayer-example'
+include ':dailyyogaplayer-ijk'
 rootProject.name = "dailyyoga_player"

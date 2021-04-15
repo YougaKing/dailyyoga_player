@@ -21,6 +21,8 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.text.TextUtils;
 
+import com.dailyyoga.cn.media.misc.IMediaFormat;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;

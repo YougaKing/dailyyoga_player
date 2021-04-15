@@ -1,12 +1,12 @@
 package com.dailyyoga.cn.media.exo.demo.player;
 
+import com.dailyyoga.cn.media.misc.IMediaFormat;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.TrackGroup;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 
-import tv.danmaku.ijk.media.player.misc.IMediaFormat;
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 
 /**
  * @author: YougaKingWu@gmail.com

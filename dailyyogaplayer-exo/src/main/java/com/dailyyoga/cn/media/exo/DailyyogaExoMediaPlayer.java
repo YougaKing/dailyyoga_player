@@ -22,8 +22,12 @@ import android.net.Uri;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 
+import com.dailyyoga.cn.media.AbstractMediaPlayer;
+import com.dailyyoga.cn.media.IMediaPlayer;
+import com.dailyyoga.cn.media.MediaInfo;
 import com.dailyyoga.cn.media.exo.demo.player.DemoPlayer;
 import com.dailyyoga.cn.media.exo.demo.player.DemoUtil;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
@@ -31,10 +35,6 @@ import com.google.android.exoplayer2.MediaItem;
 import java.io.FileDescriptor;
 import java.util.Map;
 
-import tv.danmaku.ijk.media.player.AbstractMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.MediaInfo;
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 
 import static com.google.android.exoplayer2.Player.REPEAT_MODE_OFF;
 import static com.google.android.exoplayer2.Player.REPEAT_MODE_ONE;
@@ -347,7 +347,7 @@ public class DailyyogaExoMediaPlayer extends AbstractMediaPlayer {
                 case ExoPlaybackException.TYPE_REMOTE:
                     break;
             }
-            notifyOnError(IMediaPlayer.MEDIA_ERROR_UNKNOWN, IMediaPlayer.MEDIA_ERROR_UNKNOWN);
+            notifyOnError(IMediaPlayer.MEDIA_ERROR_UNKNOWN, IMediaPlayer.MEDIA_ERROR_UNKNOWN, e);
         }
 
         @Override

@@ -37,6 +37,8 @@ import androidx.annotation.NonNull;
 
 import com.dailyyoga.cn.media.android.AndroidMediaPlayer;
 import com.dailyyoga.cn.media.exo.DailyyogaExoMediaPlayer;
+import com.dailyyoga.cn.media.misc.IMediaDataSource;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 import com.dailyyoga.cn.media.services.MediaPlayerService;
 
 import java.io.File;
@@ -44,11 +46,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import tv.danmaku.ijk.media.player.TextureMediaPlayer;
-import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 
 import static com.dailyyoga.cn.media.PVOptions.RENDER_NONE;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_SURFACE_VIEW;
@@ -89,11 +87,11 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
     private int mVideoRotationDegree;
     private int mCurrentBufferPercentage;
     private IMediaController mMediaController;
-    private EventListener.OnCompletionListener mOnCompletionListener;
-    private EventListener.OnPreparedListener mOnPreparedListener;
-    private EventListener.OnErrorListener mOnErrorListener;
-    private EventListener.OnInfoListener mOnInfoListener;
-    private EventListener.OnBufferingUpdateListener mOnBufferingUpdateListener;
+    private IMediaPlayer.OnCompletionListener mOnCompletionListener;
+    private IMediaPlayer.OnPreparedListener mOnPreparedListener;
+    private IMediaPlayer.OnErrorListener mOnErrorListener;
+    private IMediaPlayer.OnInfoListener mOnInfoListener;
+    private IMediaPlayer.OnBufferingUpdateListener mOnBufferingUpdateListener;
     private int mSeekWhenPrepared;  // recording the seek position while preparing
 
     /** Subtitle rendering widget overlaid on top of the video. */
@@ -342,12 +340,12 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
             Log.w(TAG, "Unable to open content: " + mUri, ex);
             mCurrentState = STATE_ERROR;
             mTargetState = STATE_ERROR;
-            mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
+            mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0, ex);
         } catch (IllegalArgumentException ex) {
             Log.w(TAG, "Unable to open content: " + mUri, ex);
             mCurrentState = STATE_ERROR;
             mTargetState = STATE_ERROR;
-            mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
+            mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0, ex);
         } finally {
             // REMOVED: mPendingSubtitleTracks.clear();
         }
@@ -396,7 +394,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
 
     private final IMediaPlayer.OnPreparedListener mPreparedListener = new IMediaPlayer.OnPreparedListener() {
         @Override
-        public void onPrepared(IMediaPlayer mp) {
+        public void onPrepared(IMediaPlayer mp, long time) {
             Log.d(TAG, "Prepared: ");
             mPrepareEndTime = System.currentTimeMillis();
             mCurrentState = STATE_PREPARED;
@@ -519,7 +517,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
 
     private final IMediaPlayer.OnErrorListener mErrorListener = new IMediaPlayer.OnErrorListener() {
         @Override
-        public boolean onError(IMediaPlayer mp, int framework_err, int impl_err) {
+        public boolean onError(IMediaPlayer mp, int framework_err, int impl_err, Throwable t) {
             Log.d(TAG, "Error: " + framework_err + "," + impl_err);
             mCurrentState = STATE_ERROR;
             mTargetState = STATE_ERROR;
@@ -529,7 +527,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
 
             /* If an error handler has been supplied, use it and finish. */
             if (mOnErrorListener != null) {
-                if (mOnErrorListener.onError(mMediaPlayer, framework_err, impl_err)) {
+                if (mOnErrorListener.onError(mMediaPlayer, framework_err, impl_err, t)) {
                     return true;
                 }
             }
@@ -551,23 +549,23 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
         mSeekEndTime = System.currentTimeMillis();
     };
 
-    public void setOnPreparedListener(EventListener.OnPreparedListener l) {
+    public void setOnPreparedListener(IMediaPlayer.OnPreparedListener l) {
         mOnPreparedListener = l;
     }
 
-    public void setOnCompletionListener(EventListener.OnCompletionListener l) {
+    public void setOnCompletionListener(IMediaPlayer.OnCompletionListener l) {
         mOnCompletionListener = l;
     }
 
-    public void setOnErrorListener(EventListener.OnErrorListener l) {
+    public void setOnErrorListener(IMediaPlayer.OnErrorListener l) {
         mOnErrorListener = l;
     }
 
-    public void setOnInfoListener(EventListener.OnInfoListener l) {
+    public void setOnInfoListener(IMediaPlayer.OnInfoListener l) {
         mOnInfoListener = l;
     }
 
-    public void setOnBufferingUpdateListener(EventListener.OnBufferingUpdateListener onBufferingUpdateListener) {
+    public void setOnBufferingUpdateListener(IMediaPlayer.OnBufferingUpdateListener onBufferingUpdateListener) {
         mOnBufferingUpdateListener = onBufferingUpdateListener;
     }
 

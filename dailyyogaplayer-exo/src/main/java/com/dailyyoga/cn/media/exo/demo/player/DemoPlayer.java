@@ -22,6 +22,7 @@ import android.view.Surface;
 
 import androidx.annotation.Nullable;
 
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
@@ -37,7 +38,6 @@ import com.google.android.exoplayer2.util.EventLogger;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 
 /**
  * A wrapper around {link ExoPlayer} that provides a higher level interface. It can be prepared

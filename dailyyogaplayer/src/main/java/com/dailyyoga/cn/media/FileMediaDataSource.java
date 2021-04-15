@@ -17,13 +17,12 @@
 
 package com.dailyyoga.cn.media;
 
+import com.dailyyoga.cn.media.misc.IMediaDataSource;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
 
 public class FileMediaDataSource implements IMediaDataSource {
     private RandomAccessFile mFile;

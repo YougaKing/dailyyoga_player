@@ -25,5 +25,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
+    implementation project(':dailyyogaplayer-basic')
 }

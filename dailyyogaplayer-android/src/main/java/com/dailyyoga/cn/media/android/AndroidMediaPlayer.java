@@ -10,18 +10,18 @@ import android.text.TextUtils;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 
+import com.dailyyoga.cn.media.AbstractMediaPlayer;
+import com.dailyyoga.cn.media.MediaInfo;
+import com.dailyyoga.cn.media.MediaTimedText;
+import com.dailyyoga.cn.media.misc.IMediaDataSource;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
+import com.dailyyoga.cn.media.pragma.DebugLog;
+
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-import tv.danmaku.ijk.media.player.AbstractMediaPlayer;
-import tv.danmaku.ijk.media.player.IjkTimedText;
-import tv.danmaku.ijk.media.player.MediaInfo;
-import tv.danmaku.ijk.media.player.misc.AndroidTrackInfo;
-import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
-import tv.danmaku.ijk.media.player.pragma.DebugLog;
 
 /**
  * @author: YougaKingWu@gmail.com
@@ -324,7 +324,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
         @Override
         public boolean onError(MediaPlayer mp, int what, int extra) {
             AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
-            return self != null && AndroidMediaPlayer.this.notifyOnError(what, extra);
+            return self != null && AndroidMediaPlayer.this.notifyOnError(what, extra, null);
         }
 
         @Override
@@ -371,11 +371,11 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
         public void onTimedText(MediaPlayer mp, TimedText text) {
             AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
-                IjkTimedText ijkText = null;
+                MediaTimedText timedText = null;
                 if (text != null) {
-                    ijkText = new IjkTimedText(text.getBounds(), text.getText());
+                    timedText = new MediaTimedText(text.getBounds(), text.getText());
                 }
-                AndroidMediaPlayer.this.notifyOnTimedText(ijkText);
+                AndroidMediaPlayer.this.notifyOnTimedText(timedText);
             }
         }
     }

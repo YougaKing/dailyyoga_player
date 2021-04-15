@@ -19,6 +19,9 @@ package tv.danmaku.ijk.media.player.misc;
 
 import android.text.TextUtils;
 
+import com.dailyyoga.cn.media.misc.IMediaFormat;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
+
 import tv.danmaku.ijk.media.player.IjkMediaMeta;
 
 public class IjkTrackInfo implements ITrackInfo {

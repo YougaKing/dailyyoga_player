@@ -33,10 +33,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.dailyyoga.cn.media.example.R;
+import com.dailyyoga.cn.media.misc.ITrackInfo;
 
 import java.util.Locale;
-
-import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 
 
 public class TracksFragment extends Fragment {

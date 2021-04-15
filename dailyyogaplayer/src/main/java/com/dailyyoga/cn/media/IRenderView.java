@@ -25,8 +25,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-
 public interface IRenderView {
     int AR_ASPECT_FIT_PARENT = 0; // without clip
     int AR_ASPECT_FILL_PARENT = 1; // may clip

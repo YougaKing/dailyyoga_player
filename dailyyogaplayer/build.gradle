@@ -44,12 +44,15 @@ dependencies {
 
     implementation "androidx.annotation:annotation:${projectConfig.androidxAannotationVersion}"
 
+    embed project(':dailyyogaplayer-basic')
     embed project(':dailyyogaplayer-exo')
     embed project(':dailyyogaplayer-android')
+    embed project(':dailyyogaplayer-ijk')
+
+    api project(':dailyyogaplayer-basic')
 
     implementation "com.google.android.exoplayer:exoplayer:${projectConfig.exoplayerVersion}"
 
-    implementation "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv5:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-arm64:${projectConfig.ijkplayerVersion}"
