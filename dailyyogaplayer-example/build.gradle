@@ -38,6 +38,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    implementation project(':dailyyogaplayer-basic')
     implementation project(':dailyyogaplayer')
 //    implementation 'com.github.YougaKing:dailyyoga_player:1.0.2'
 
