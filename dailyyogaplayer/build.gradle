@@ -68,7 +68,7 @@ uploadArchives {
             //设置插件的GAV参数
             pom.groupId = 'com.github.YougaKing'
             pom.artifactId = 'dailyyoga_player'
-            pom.version = '1.0.6'
+            pom.version = '1.0.7'
             //文件发布到下面目录
             repository(url: uri('../maven'))
         }

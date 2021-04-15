@@ -124,6 +124,11 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public void prepareAsync() throws IllegalStateException {
+        try {
+            this.mInternalMediaPlayer.reset();
+        } catch (IllegalStateException var2) {
+            DebugLog.printStackTrace(var2);
+        }
         this.mInternalMediaPlayer.prepareAsync();
     }
 
