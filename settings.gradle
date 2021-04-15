@@ -1,3 +1,4 @@
+include ':ijkplayer-java'
 include ':dailyyogaplayer'
 include ':dailyyogaplayer-exo'
 include ':dailyyogaplayer-android'

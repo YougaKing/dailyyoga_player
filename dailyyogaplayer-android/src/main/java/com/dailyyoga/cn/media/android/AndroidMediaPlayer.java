@@ -195,7 +195,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
     @Override
     public long getCurrentPosition() {
         try {
-            return (long) this.mInternalMediaPlayer.getCurrentPosition();
+            return this.mInternalMediaPlayer.getCurrentPosition();
         } catch (IllegalStateException var2) {
             DebugLog.printStackTrace(var2);
             return 0L;
@@ -317,19 +317,19 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public boolean onInfo(MediaPlayer mp, int what, int extra) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             return self != null && AndroidMediaPlayer.this.notifyOnInfo(what, extra);
         }
 
         @Override
         public boolean onError(MediaPlayer mp, int what, int extra) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             return self != null && AndroidMediaPlayer.this.notifyOnError(what, extra);
         }
 
         @Override
         public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 AndroidMediaPlayer.this.notifyOnVideoSizeChanged(width, height, 1, 1);
             }
@@ -337,7 +337,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public void onSeekComplete(MediaPlayer mp) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 AndroidMediaPlayer.this.notifyOnSeekComplete();
             }
@@ -345,7 +345,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public void onBufferingUpdate(MediaPlayer mp, int percent) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 AndroidMediaPlayer.this.notifyOnBufferingUpdate(percent);
             }
@@ -353,7 +353,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public void onCompletion(MediaPlayer mp) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 AndroidMediaPlayer.this.notifyOnCompletion();
             }
@@ -361,7 +361,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public void onPrepared(MediaPlayer mp) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 AndroidMediaPlayer.this.notifyOnPrepared();
             }
@@ -369,7 +369,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
         @Override
         public void onTimedText(MediaPlayer mp, TimedText text) {
-            AndroidMediaPlayer self = (AndroidMediaPlayer) this.mWeakMediaPlayer.get();
+            AndroidMediaPlayer self = this.mWeakMediaPlayer.get();
             if (self != null) {
                 IjkTimedText ijkText = null;
                 if (text != null) {

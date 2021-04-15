@@ -49,7 +49,7 @@ dependencies {
 
     implementation "com.google.android.exoplayer:exoplayer:${projectConfig.exoplayerVersion}"
 
-    api "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
+    implementation "tv.danmaku.ijk.media:ijkplayer-java:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv5:${projectConfig.ijkplayerVersion}"
     implementation "tv.danmaku.ijk.media:ijkplayer-arm64:${projectConfig.ijkplayerVersion}"
