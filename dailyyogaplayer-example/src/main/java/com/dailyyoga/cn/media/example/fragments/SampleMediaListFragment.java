@@ -64,8 +64,10 @@ public class SampleMediaListFragment extends Fragment {
             String url = item.mUrl;
             VideoActivity.intentTo(activity, url, name);
         });
-        mAdapter.addItem("https://bsyhls.dailyyoga.com.cn/6e0c6460d8eca0b18df35b249e42dbcd.m3u8", "全方位身体评估");
-        mAdapter.addItem("https://huawei.dailyyoga.com.cn/chunji11586327715951", "春季淋巴排毒");
+        mAdapter.addItem("https://bsyhls.dailyyoga.com.cn/6e0c6460d8eca0b18df35b249e42dbcd.m3u8", "全方位身体评估-https-m3u8");
+        mAdapter.addItem("http://bsyhls.dailyyoga.com.cn/6e0c6460d8eca0b18df35b249e42dbcd.m3u8", "全方位身体评估-http-m3u8");
+        mAdapter.addItem("https://huawei.dailyyoga.com.cn/chunji11586327715951", "春季淋巴排毒-https-mp4");
+        mAdapter.addItem("http://huawei.dailyyoga.com.cn/chunji11586327715951", "春季淋巴排毒-http-mp4");
     }
 
     final class SampleMediaItem {

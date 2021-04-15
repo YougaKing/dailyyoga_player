@@ -56,6 +56,7 @@ import com.dailyyoga.cn.media.example.widget.TableLayoutBinder;
 import com.dailyyoga.cn.media.misc.ITrackInfo;
 
 import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER;
+import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_IJK_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_NONE;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_SURFACE_VIEW;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_TEXTURE_VIEW;
@@ -148,7 +149,7 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
 
         mVideoView = (DailyyogaVideoView) findViewById(R.id.video_view);
         PVOptions pvOptions = pvOptions(this);
-        pvOptions.setPlayer(PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER);
+        pvOptions.setPlayer(PV_PLAYER_IJK_MEDIA_PLAYER);
         mVideoView.setPVOptions(pvOptions);
         mVideoView.setMediaController(mMediaController);
         setHudView(mHudView);

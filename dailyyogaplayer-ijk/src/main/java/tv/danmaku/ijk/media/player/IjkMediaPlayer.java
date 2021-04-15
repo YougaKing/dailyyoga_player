@@ -46,7 +46,7 @@ import com.dailyyoga.cn.media.AbstractMediaPlayer;
 import com.dailyyoga.cn.media.IMediaPlayer;
 import com.dailyyoga.cn.media.MediaInfo;
 import com.dailyyoga.cn.media.MediaTimedText;
-import com.dailyyoga.cn.media.misc.IMediaDataSource;
+import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
 import com.dailyyoga.cn.media.misc.ITrackInfo;
 import com.dailyyoga.cn.media.pragma.DebugLog;
 
