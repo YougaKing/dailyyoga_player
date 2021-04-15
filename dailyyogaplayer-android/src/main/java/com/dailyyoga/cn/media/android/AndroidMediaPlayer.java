@@ -30,6 +30,7 @@ import java.util.Map;
  */
 public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
+    private static final String TAG = AndroidMediaPlayer.class.getSimpleName();
     private final MediaPlayer mInternalMediaPlayer;
     private final AndroidMediaPlayerListenerHolder mInternalListenerAdapter;
     private String mDataSource;
@@ -70,22 +71,26 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public void setDataSource(Context context, Uri uri) throws IOException, IllegalArgumentException, SecurityException, IllegalStateException {
+        DebugLog.e(TAG, "setDataSource()");
         this.mInternalMediaPlayer.setDataSource(context, uri);
     }
 
     @TargetApi(14)
     @Override
     public void setDataSource(Context context, Uri uri, Map<String, String> headers) throws IOException, IllegalArgumentException, SecurityException, IllegalStateException {
+        DebugLog.e(TAG, "setDataSource()");
         this.mInternalMediaPlayer.setDataSource(context, uri, headers);
     }
 
     @Override
     public void setDataSource(FileDescriptor fd) throws IOException, IllegalArgumentException, IllegalStateException {
+        DebugLog.e(TAG, "setDataSource()");
         this.mInternalMediaPlayer.setDataSource(fd);
     }
 
     @Override
     public void setDataSource(String path) throws IOException, IllegalArgumentException, SecurityException, IllegalStateException {
+        DebugLog.e(TAG, "setDataSource()");
         this.mDataSource = path;
         Uri uri = Uri.parse(path);
         String scheme = uri.getScheme();
@@ -100,6 +105,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
     @TargetApi(23)
     @Override
     public void setDataSource(IMediaDataSource mediaDataSource) {
+        DebugLog.e(TAG, "setDataSource()");
         this.releaseMediaDataSource();
         this.mMediaDataSource = new MediaDataSourceProxy(mediaDataSource);
         this.mInternalMediaPlayer.setDataSource(this.mMediaDataSource);
@@ -124,26 +130,25 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public void prepareAsync() throws IllegalStateException {
-        try {
-            this.mInternalMediaPlayer.reset();
-        } catch (IllegalStateException var2) {
-            DebugLog.printStackTrace(var2);
-        }
+        DebugLog.e(TAG, "prepareAsync()");
         this.mInternalMediaPlayer.prepareAsync();
     }
 
     @Override
     public void start() throws IllegalStateException {
+        DebugLog.e(TAG, "start()");
         this.mInternalMediaPlayer.start();
     }
 
     @Override
     public void stop() throws IllegalStateException {
+        DebugLog.e(TAG, "stop()");
         this.mInternalMediaPlayer.stop();
     }
 
     @Override
     public void pause() throws IllegalStateException {
+        DebugLog.e(TAG, "pause()");
         this.mInternalMediaPlayer.pause();
     }
 
@@ -219,6 +224,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public void release() {
+        DebugLog.e(TAG, "release()");
         this.mIsReleased = true;
         this.mInternalMediaPlayer.release();
         this.releaseMediaDataSource();
@@ -228,6 +234,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public void reset() {
+        DebugLog.e(TAG, "reset()");
         try {
             this.mInternalMediaPlayer.reset();
         } catch (IllegalStateException var2) {
