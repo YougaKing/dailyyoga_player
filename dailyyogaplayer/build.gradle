@@ -44,12 +44,9 @@ dependencies {
 
     implementation "androidx.annotation:annotation:${projectConfig.androidxAannotationVersion}"
 
-    embed project(':dailyyogaplayer-basic')
     embed project(':dailyyogaplayer-exo')
     embed project(':dailyyogaplayer-android')
     embed project(':dailyyogaplayer-ijk')
-
-    api project(':dailyyogaplayer-basic')
 
     implementation "com.google.android.exoplayer:exoplayer:${projectConfig.exoplayerVersion}"
 
@@ -70,7 +67,7 @@ uploadArchives {
             //设置插件的GAV参数
             pom.groupId = 'com.github.YougaKing'
             pom.artifactId = 'dailyyoga_player'
-            pom.version = '1.0.4'
+            pom.version = '1.0.5'
             //文件发布到下面目录
             repository(url: uri('../maven'))
         }

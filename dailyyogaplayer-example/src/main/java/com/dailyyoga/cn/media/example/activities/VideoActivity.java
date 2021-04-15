@@ -55,6 +55,7 @@ import com.dailyyoga.cn.media.example.widget.MediaPlayerCompat;
 import com.dailyyoga.cn.media.example.widget.TableLayoutBinder;
 import com.dailyyoga.cn.media.misc.ITrackInfo;
 
+import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_ANDROID_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.PV_PLAYER_IJK_MEDIA_PLAYER;
 import static com.dailyyoga.cn.media.PVOptions.RENDER_NONE;
@@ -149,7 +150,7 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
 
         mVideoView = (DailyyogaVideoView) findViewById(R.id.video_view);
         PVOptions pvOptions = pvOptions(this);
-        pvOptions.setPlayer(PV_PLAYER_IJK_MEDIA_PLAYER);
+        pvOptions.setPlayer(PV_PLAYER_ANDROID_MEDIA_PLAYER);
         mVideoView.setPVOptions(pvOptions);
         mVideoView.setMediaController(mMediaController);
         setHudView(mHudView);
@@ -232,24 +233,24 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
             mMediaController.showOnce(mToastTextView);
             return true;
         } else if (id == R.id.action_toggle_player) {
-//            int player = mVideoView.getPVOptions().getPlayer();
-//            switch (player) {
-//                case PV_PLAYER_ANDROID_MEDIA_PLAYER:
-//                    player = PV_PLAYER_IJK_MEDIA_PLAYER;
-//                    break;
-//                case PV_PLAYER_IJK_MEDIA_PLAYER:
-//                    player = PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER;
-//                    break;
-//                case PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER:
-//                    player = PV_PLAYER_ANDROID_MEDIA_PLAYER;
-//                    break;
-//            }
-//            mVideoView.getPVOptions().setPlayer(player);
-//            player = mVideoView.togglePlayer();
-//            String playerText = PVOptions.getPlayerText(this, player);
-//            getSupportActionBar().setTitle(playerText);
-//            mToastTextView.setText(playerText);
-//            mMediaController.showOnce(mToastTextView);
+            int player = mVideoView.getPVOptions().getPlayer();
+            switch (player) {
+                case PV_PLAYER_ANDROID_MEDIA_PLAYER:
+                    player = PV_PLAYER_IJK_MEDIA_PLAYER;
+                    break;
+                case PV_PLAYER_IJK_MEDIA_PLAYER:
+                    player = PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER;
+                    break;
+                case PV_PLAYER_DAILYYOGA_EXO_MEDIA_PLAYER:
+                    player = PV_PLAYER_ANDROID_MEDIA_PLAYER;
+                    break;
+            }
+            mVideoView.getPVOptions().setPlayer(player);
+            player = mVideoView.togglePlayer(player, mVideoView.getCurrentPosition());
+            String playerText = PVOptions.getPlayerText(this, player);
+            getSupportActionBar().setTitle(playerText);
+            mToastTextView.setText(playerText);
+            mMediaController.showOnce(mToastTextView);
             return true;
         } else if (id == R.id.action_toggle_render) {
             int render = mVideoView.getPVOptions().getPlayer();

@@ -27,6 +27,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':dailyyogaplayer-basic')
+    api project(':dailyyogaplayer-basic')
 }
 

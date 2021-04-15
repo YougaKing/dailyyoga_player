@@ -26,5 +26,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "com.google.android.exoplayer:exoplayer:${projectConfig.exoplayerVersion}"
-    implementation project(':dailyyogaplayer-basic')
+    api project(':dailyyogaplayer-basic')
 }
