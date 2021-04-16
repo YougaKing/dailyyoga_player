@@ -538,7 +538,6 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
     private final IMediaPlayer.OnBufferingUpdateListener mBufferingUpdateListener = new IMediaPlayer.OnBufferingUpdateListener() {
         @Override
         public void onBufferingUpdate(IMediaPlayer mp, int percent) {
-            Log.d(TAG, "Buffering: " + percent);
             mCurrentBufferPercentage = percent;
             if (mOnBufferingUpdateListener == null) return;
             mOnBufferingUpdateListener.onBufferingUpdate(mMediaPlayer, percent);
@@ -632,6 +631,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
     };
 
     public void releaseWithoutStop() {
+        Log.d(TAG, "releaseWithoutStop()");
         if (mMediaPlayer != null)
             mMediaPlayer.setDisplay(null);
     }
@@ -640,6 +640,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
      * release the media player in any state
      */
     public void release(boolean clearTargetState) {
+        Log.d(TAG, "release()");
         if (mMediaPlayer != null) {
             mMediaPlayer.reset();
             mMediaPlayer.release();
@@ -684,6 +685,8 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
                 // 耳机按键 || 播放/暂停媒体键
                 case KeyEvent.KEYCODE_HEADSETHOOK:
                 case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+                case KeyEvent.KEYCODE_ENTER:
+                case KeyEvent.KEYCODE_DPAD_CENTER:
                     if (mMediaPlayer.isPlaying()) {
                         pause();
                     } else {
@@ -729,6 +732,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
 
     @Override
     public void start() {
+        Log.d(TAG, "start()");
         if (isInPlaybackState()) {
             mMediaPlayer.start();
             mCurrentState = STATE_PLAYING;
@@ -738,6 +742,7 @@ public class DailyyogaVideoView extends FrameLayout implements MediaController.M
 
     @Override
     public void pause() {
+        Log.d(TAG, "pause()");
         if (isInPlaybackState()) {
             if (mMediaPlayer.isPlaying()) {
                 mMediaPlayer.pause();
